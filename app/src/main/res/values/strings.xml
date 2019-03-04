@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">BookBook</string>
     <string name="action_settings">Settings</string>
+    <string name="billing">လက္က်န္ေငြ - 0 | စာအုပ္၀ယ္ဖို႔ ေငြျဖည္႔ရန္ႏွွိပ္ပါ။</string>
+    <string name="search">စာအုပ္ရွာရန္</string>
+    <string name="audio_book">အသံထြက္စာ႔အုပ္မ်ား</string>
+    <string name="free_book">အခမဲ့ဖတ္စရာ</string>
+    <string name="category">ေနာက္ဆံုးထြက္ စာအုပ္မ်ား</string>
 </resources>

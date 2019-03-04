@@ -36,11 +36,15 @@
             android:background="@color/white"
             >
 
-            <android.support.v4.view.ViewPager
+
+            <ss.com.bannerslider.Slider
                 android:id="@+id/banner_slider"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@color/colorAccent" />
+                app:slider_loopSlides="true"
+                app:slider_interval="3000"
+                app:slider_emptyView="@layout/layout_empty"
+                />
 
             <RelativeLayout
                 android:id="@+id/rl2"

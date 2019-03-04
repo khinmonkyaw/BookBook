@@ -1,0 +1,33 @@
+{
+    "book_list" : [
+        
+        {
+            "book_name" : "နန်းစဉ်ပတ္တမြား",
+            "book_price" : 500,
+            "cat_id" : 1,
+            "category_name" : "နောက်ဆုံးထွက် ကာတွန်းများ",
+            "cover_url" : "https://dtl6rju7yddm5.cloudfront.net/wunzin/assets/comics/USS/cover/USS_royalruby.jpg"
+        },
+        {
+            "book_name" : "မဟာကပ်စီး",
+            "book_price" : 5000,
+            "cat_id" : 1,
+            "category_name" : "နောက်ဆုံးထွက် ကာတွန်းများ",
+            "cover_url" : "https://dtl6rju7yddm5.cloudfront.net/wunzin/assets/comics/UKS/cover/UKS_maharkatsee.jpg"
+        },
+        {
+            "book_name" : "ထွက်ပြေးသွားသော မုန့်လုံးလေး",
+            "book_price" : 1000,
+            "cat_id":2,
+            "category_name" : "အခမဲ့ ကာတွန်းများ",
+            "cover_url" : "https://dtl6rju7yddm5.cloudfront.net/wunzin/assets/comics/MTS/cover/MTS_runawaysnack.jpg"
+        },
+        {
+            "book_name" : "အလွဘုရင္ရဲ႕ ဘဝပံုျပင္",
+            "book_price" : 800,
+            "cat_id" : 3,
+            "category_name" : "ကာတွန်းစုံ",
+            "cover_url" : "https://dtl6rju7yddm5.cloudfront.net/wunzin/assets/comics/STY/cover/STY_kingofbeauty.jpg"
+        }
+    ]
+}

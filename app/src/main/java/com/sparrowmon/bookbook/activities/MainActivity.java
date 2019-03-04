@@ -1,47 +1,84 @@
 package com.sparrowmon.bookbook.activities;
 
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Adapter;
 
 import com.sparrowmon.bookbook.R;
+import com.sparrowmon.bookbook.adapters.BannerSliderAdapter;
+import com.sparrowmon.bookbook.adapters.BookListAdapter;
 import com.sparrowmon.bookbook.adapters.SliderAdapter;
+import com.sparrowmon.bookbook.network.responses.Book;
+import com.sparrowmon.bookbook.network.responses.BookList;
+import com.sparrowmon.bookbook.utilities.JsonReader;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import ss.com.bannerslider.Slider;
 
 public class MainActivity extends AppCompatActivity {
-    private ViewPager viewPager;
-    private SliderAdapter sliderApater;
+    private Slider slider;
+    private BannerSliderAdapter sliderApater;
     private  Integer[] IMAGES = {R.drawable.slider_image1,R.drawable.sliderimage2,R.drawable.sliderimage3};
     private ArrayList<Integer> ImagesArray = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private Toolbar toolbar;
+    private  BookListAdapter bookListAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+
+
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        slider = findViewById(R.id.banner_slider);
+        //setSliderImage();
+        slider.setAdapter(new BannerSliderAdapter());
 
-        viewPager = findViewById(R.id.vp);
+        recyclerView = findViewById(R.id.rv);
+        bookListAdapter = new BookListAdapter();
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
+        recyclerView.setAdapter(bookListAdapter);
 
-       setSliderImage();
+
+        BookList bookList=JsonReader.readJson(getApplicationContext());
+
+        HashMap<Integer, List<Book>> hashMap = new HashMap<>();
+        for(Book book : bookList.getBookArrayList())
+        {
+            int categoryId = book.getCategory();
+            if(hashMap.containsKey(categoryId))
+            {
+                hashMap.get(categoryId).add(book);
+            }
+            else
+            {
+                List<Book> bookList1 = new ArrayList<>();
+                bookList1.add(book);
+                hashMap.put(categoryId,bookList1);
 
 
-
+            }
+        }
+        Log.e("Mainacgtivity","Main");
+        bookListAdapter.setBookList(hashMap);
 
 
 
     }
 
-    private void setSliderImage() {
+
+   /* private void setSliderImage() {
 
         for(int i=0;i<IMAGES.length;i++)
         {
@@ -49,9 +86,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-        sliderApater = new SliderAdapter(ImagesArray);
-        viewPager.setAdapter(sliderApater);
-    }
+       // sliderApater = new SliderAdapter(ImagesArray);
+        slider.setAdapter(sliderApater);
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
